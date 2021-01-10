@@ -1,26 +1,53 @@
 "use strict";
 
-let number = 5;
-const leftBorderWidth = 1;
+// function User(name, id) {
+//   this.name = name;
+//   this.id = id;
+//   this.human = true;
+//   this.hello = function () {
+//     console.log(`Hello ${this.name}`);
+//   };
+// }
 
-number = 10;
 
-console.log(number);
+// User.prototype.exit = function (name) {
+//   console.log(`Пользователь ${this.name} вышел из чата`);
+// };
 
-const obj = {
-  a: 50,
-};
+// const ivan = new User('Ivan', 22);
+// const alex = new User('Alex', 29);
 
-obj.a = 10;
+// ivan.exit();
 
-console.log(obj);
 
-console.log(name);
+// ivan.hello();
+// alex.hello();
 
-var name = "Ivan";
+// console.log(ivan);
+// console.log(alex);
 
-{
-  let result = 33;
+// const firstElem = prompt('Введите первое число:', 0),
+//   secondElem = prompt('Введите второе число:', 0);
+
+function Calculator() {
+
+  this.read = function () {
+    this.first = +prompt('Введите первое число:', 0);
+    this.second = +prompt('Введите второе число:', 0);
+  };
+
+  this.sum = function () {
+    return this.first + this.second;
+  };
+
+  this.mul = function () {
+    return this.first * this.second;
+  };
+
 }
 
+let calculator = new Calculator();
+calculator.read();
 
+alert('Sum:' + calculator.sum());
+alert('Mul:' + calculator.mul());
