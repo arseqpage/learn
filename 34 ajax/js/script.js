@@ -1,26 +1,30 @@
 "use strict";
 
-let number = 5;
-const leftBorderWidth = 1;
+const inputRub = document.querySelector('#rub'),
+  inputUsd = document.querySelector('#usd');
 
-number = 10;
+inputRub.addEventListener('input', () => {
+  const request = new XMLHttpRequest();
 
-console.log(number);
+  request.open('GET', 'js/current2.json');
+  request.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+  request.send();
 
-const obj = {
-  a: 50,
-};
+  request.addEventListener('load', () => {
+    if (request.status === 200) {
+      console.log(request.response);
+      const data = JSON.parse(request.response);
+      inputUsd.value = (+inputRub.value / data.current.usd).toFixed(3);
+    } else {
+      inputUsd.value = 'Что-то пошло не так';
+    }
+  });
 
-obj.a = 10;
-
-console.log(obj);
-
-console.log(name);
-
-var name = "Ivan";
-
-{
-  let result = 33;
-}
+  //status
+  //statusText
+  // response
+  // readyState
 
 
+
+});
