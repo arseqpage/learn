@@ -1,26 +1,68 @@
 "use strict";
 
-let number = 5;
-const leftBorderWidth = 1;
+console.log('Запрос данных');
 
-number = 10;
+// const req = new Promise(function (resolve, reject) {
+//   setTimeout(() => {
+//     console.log('Подготовка данных...');
 
-console.log(number);
+//     const product = {
+//       name: 'TV',
+//       price: 2000,
+//     };
 
-const obj = {
-  a: 50,
+//     resolve(product); //Передаем data
+
+//   }, 2000);
+// });
+
+// req.then((product) => {
+//   // console.log('Данные получены');
+
+//   // setTimeout(() => {
+//   //   product.status = 'order';
+//   //   console.log(product);
+//   // }, 2000);
+
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       product.status = 'order';
+//       resolve(product);
+//     }, 2000);
+//   });
+
+
+// }).then(data => {
+//   data.modify = true;
+//   return data;
+// }).then((data) => {
+//   console.log(data);
+// }).catch(() => {
+//   console.error('Произошла ошибка')
+// }).finally(() => {
+//   console.log('Finnaly');
+// });
+
+
+//============================
+
+const test = time => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(), time);
+  });
 };
 
-obj.a = 10;
+// test(2000).then(() => console.log('1000 ms'));
+// test(2300).then(() => console.log('2300 ms'));
 
-console.log(obj);
+// Promise. all ждет выполнение всех промисов и потом начнет выполнять что то
 
-console.log(name);
+// Promise.all([test(1000), test(2300)]).then(() => {
+//   console.log('All');
+// });
 
-var name = "Ivan";
+// Promise.race выполняет действия только тогда, когда самый первый промис отработал правильно
 
-{
-  let result = 33;
-}
-
-
+Promise.race([test(1000), test(2300)]).then(() => {
+  console.log('All');
+});
